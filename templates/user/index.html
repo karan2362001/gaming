@@ -1,0 +1,394 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content%}
+
+<style>
+	.slide1 {
+		background-image: url("{% static 'user/images/main-slider/1.jpg' %}");
+	}
+
+	.slide2 {
+		background-image: url("{% static 'user/images/main-slider/2.jpg' %}");
+	}
+
+	.slide3 {
+		background-image: url("{% static 'user/images/main-slider/3.jpg' %}");
+	}
+
+	.game-img{
+		background-image: url("{% static 'user/images/background/5.jpg' %}");
+	}
+	.ag-format-container {
+		width: 1120px;
+		margin: 0 auto;
+	}
+
+	.ag-courses_box {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+
+		padding: 50px 0;
+	}
+
+	.ag-courses_item {
+		-ms-flex-preferred-size: calc(33.33333% - 30px);
+		flex-basis: calc(33.33333% - 30px);
+
+		margin: 0 15px 30px;
+
+		overflow: hidden;
+
+		border-radius: 28px;
+	}
+
+	.ag-courses-item_link {
+		display: block;
+		padding: 30px 20px;
+		background-color: #121212;
+
+		overflow: hidden;
+
+		position: relative;
+	}
+
+	.ag-courses-item_link:hover,
+	.ag-courses-item_link:hover .ag-courses-item_date {
+		text-decoration: none;
+		color: #FFF;
+	}
+
+	.ag-courses-item_link:hover .ag-courses-item_bg {
+		-webkit-transform: scale(10);
+		-ms-transform: scale(10);
+		transform: scale(10);
+	}
+
+	.ag-courses-item_title {
+		min-height: 87px;
+		margin: 0 0 25px;
+
+		overflow: hidden;
+
+		font-weight: bold;
+		font-size: 30px;
+		color: #FFF;
+
+		z-index: 2;
+		position: relative;
+	}
+
+	.ag-courses-item_date-box {
+		font-size: 18px;
+		color: #FFF;
+
+		z-index: 2;
+		position: relative;
+	}
+
+	.ag-courses-item_date {
+		font-weight: bold;
+		color: #f9b234;
+
+		-webkit-transition: color .5s ease;
+		-o-transition: color .5s ease;
+		transition: color .5s ease
+	}
+
+	.ag-courses-item_bg {
+		height: 128px;
+		width: 128px;
+		background-color: #f9b234;
+
+		z-index: 1;
+		position: absolute;
+		top: -75px;
+		right: -75px;
+
+		border-radius: 50%;
+
+		-webkit-transition: all .5s ease;
+		-o-transition: all .5s ease;
+		transition: all .5s ease;
+	}
+
+	.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+		background-color: #3ecd5e;
+	}
+
+	.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+		background-color: #e44002;
+	}
+
+	.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+		background-color: #952aff;
+	}
+
+	.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+		background-color: #cd3e94;
+	}
+
+	.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+		background-color: #4c49ea;
+	}
+
+
+
+	@media only screen and (max-width: 979px) {
+		.ag-courses_item {
+			-ms-flex-preferred-size: calc(50% - 30px);
+			flex-basis: calc(50% - 30px);
+		}
+
+		.ag-courses-item_title {
+			font-size: 24px;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.ag-format-container {
+			width: 96%;
+		}
+
+	}
+
+	@media only screen and (max-width: 639px) {
+		.ag-courses_item {
+			-ms-flex-preferred-size: 100%;
+			flex-basis: 100%;
+		}
+
+		.ag-courses-item_title {
+			min-height: 72px;
+			line-height: 1;
+
+			font-size: 24px;
+		}
+
+		.ag-courses-item_link {
+			padding: 22px 40px;
+		}
+
+		.ag-courses-item_date-box {
+			font-size: 16px;
+		}
+	}
+</style>
+<!-- Banner Section -->
+<section class="banner-section">
+	<div class="banner-carousel owl-theme owl-carousel">
+		<!-- Slide Item -->
+		<div class="slide-item">
+			<div class="image-layer slide1"></div>
+
+			<div class="auto-container">
+				<div class="content-box">
+					<h2>the Premier <br> Matches</h2>
+					<div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">Learn
+								more</span></a></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide Item -->
+		<div class="slide-item">
+			<div class="image-layer slide2"></div>
+			<div class="auto-container">
+				<div class="content-box">
+					<h2>the Premier <br> Matches</h2>
+					<div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">Learn
+								more</span></a></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide Item -->
+		<div class="slide-item">
+			<div class="image-layer slide3"></div>
+			<div class="auto-container">
+				<div class="content-box">
+					<h2>the Premier <br> Matches</h2>
+					<div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">Learn
+								more</span></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--End Banner Section -->
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+	<div class="auto-container">
+		<!-- Sec Title -->
+		<div class="sec-title centered">
+			<div class="title">Gaming Tournament</div>
+			<h2>the ultimate destination for online gaming tournaments.</h2>
+		</div>
+
+
+
+		<!-- Lower Box -->
+		<div class="lower-box">
+			<div class="text">Gaming Tournament, we're passionate about gaming. Our platform is designed to bring
+				together gamers from all over the world to compete, connect, and have fun. Whether you're a casual
+				player or a seasoned pro, there's something for everyone here.</div>
+			<a href="{% url 'about' %}" class="theme-btn btn-style-one"><span class="btn-title">About
+					us</span></a>
+		</div>
+
+	</div>
+</section>
+<!-- End Welcome Section -->
+
+<!-- Matches Section -->
+<section class="matches-section">
+	<div class="auto-container">
+		<!-- Sec Title -->
+		<div class="sec-title centered">
+			<div class="title">Check Our All</div>
+			<h2>Recent Tournament</h2>
+		</div>
+
+		<!-- Matches Info Tabs-->
+		<div class="matches-info-tabs">
+			<!-- Matches Tabs-->
+			<div class="matches-tabs tabs-box">
+
+				<!--Tab Btns-->
+				<ul class="tab-btns tab-buttons clearfix">
+				</ul>
+
+				<!--Tabs Container-->
+				<div class="tabs-content">
+
+					<!--Tab / Active Tab-->
+					<div class="tab active-tab" id="prod-all">
+						<div class="content">
+
+							<!-- Matches Block -->
+							<div class="matches-block">
+								<div class="inner-block">
+									<div class="row clearfix">
+
+										<div class="content-column col-lg-7 col-md-12 col-sm-12">
+											<div class="inner-column">
+												<div class="ag-format-container">
+													<div class="ag-courses_box">
+														{% for pt in past_tournaments %}
+														<div class="ag-courses_item">
+															<a href="#" class="ag-courses-item_link">
+																<div class="ag-courses-item_bg"></div>
+																<div class="ag-courses-item_title">
+																	{{pt.name}}
+																</div>
+																<div class="ag-courses-item_date-box">
+																	Start:
+																	<span class="ag-courses-item_date">
+																		{{pt.start_date}}
+																	</span>
+																</div>
+															</a>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Matches Section -->
+
+
+<!-- Call To Action Section -->
+<section class="facts-section">
+	<!-- Title Boxed -->
+	<div class="title-boxed game-img">
+		<div class="auto-container">
+			<div class="content wow fadeInLeft" data-wow-delay="0ms">
+				<h2>Gamon WHERE DIGITAL <br> WORLDS MEET REAL <br> INNOVATION</h2>
+				<a href="{% url 'tournament' %}" class="theme-btn btn-style-one"><span class="btn-title">view
+						tournaments</span></a>
+			</div>
+		</div>
+	</div>
+	<!-- End Title Boxed -->
+
+	<!-- Lower Boxed -->
+	<div class="lower-boxed">
+		<div class="auto-container">
+			<div class="row clearfix">
+
+				<!-- Counter Column -->
+				<div class="counter-column col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-column">
+
+						<!-- Featured Block -->
+						<div class="featured-block">
+							<div class="inner-box">
+								<div class="icon-box">
+									<span class="icon flaticon-joystick"></span>
+								</div>
+								<h3>785,000</h3>
+								<div class="text">Games playerd by 6,388 people in 7 days</div>
+							</div>
+						</div>
+
+						<!-- Featured Block -->
+						<div class="featured-block">
+							<div class="inner-box">
+								<div class="icon-box">
+									<span class="icon flaticon-man"></span>
+								</div>
+								<h3>63,000</h3>
+								<div class="text">Players are available to hit you live</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Testimonial Column -->
+				<div class="testimonial-column col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-column wow fadeInRight" data-wow-delay="0ms">
+
+						<div class="single-item-carousel owl-carousel owl-theme">
+
+							<!-- Testimonial Block -->
+							<div class="testimonial-block">
+								<div class="inner-box">
+									<div class="quote-icon flaticon-quote-1"></div>
+									<div class="text">Joining a tournament on Gaming tournament is easy! Simply sign
+										up for an account, and you'll gain access to a wide range of tournaments across
+										various gaming titles. Browse through the available tournaments, choose the ones
+										that interest you, and register to compete. Once you're registered, you'll find
+										all the details you need in your personal dashboard.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</section>
+<!-- End Call To Action Section -->
+
+
+{% endblock %}

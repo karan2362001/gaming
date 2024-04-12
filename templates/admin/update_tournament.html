@@ -1,0 +1,67 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block contant%}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Update Tournament</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+        <div class="card-body">
+            <form action="{% url 'admin_edit_tournament' tournament.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Game</label>
+                            <input type="text" class="form-control" name="game" value="{{tournament.game}}" placeholder="Game...." >
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Game Name</label>
+                            <input type="text" class="form-control" name="game_name" value="{{tournament.name}}" placeholder="Game Name...." >
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Start Date : {{tournament.start_date}}</label>
+                            <input type="date" class="form-control" name="start_date" value="{{tournament.start_date|date:'Y-m-d' }}" placeholder="Start Date...." >
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Start Time : {{tournament.start_time}}</label>
+                            {% with start_time=tournament.start_time|date:"H:i" %}
+                            <input type="time" class="form-control" name="start_time" value="{{ start_time }}" placeholder="Start Time...." >
+                            {% endwith %}
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Max players</label>
+                            <input type="text" class="form-control" name="max_players" value="{{tournament.max_players}}" >
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Group Size : {{tournament.group_size}}</label>
+                            <select class="custom-select" name="group_size" >
+                                <option disabled>Select Group Size</option>
+                                <option value="solo" {% if tournament.group_size == 'solo' %}selected{% endif %}>Solo</option>
+                                <option value="duo" {% if tournament.group_size == 'duo' %}selected{% endif %}>Duo</option>
+                                <option value="squad" {% if tournament.group_size == 'squad' %}selected{% endif %}>Squad</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Update Tournament</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock%}

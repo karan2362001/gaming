@@ -1,0 +1,114 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block contant%}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tournament</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
+            <h6 class="m-0 font-weight-bold text-primary"></h6>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Create
+                Tournament</button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>Game Name</th>
+                            <th>Start Date</th>
+                            <th>Start Time</th>
+                            <th>Max Players</th>
+                            <th>Gorup Size</th>
+                            <th>Other</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in tournaments %}
+                        <tr>
+                            <td>{{t.game}}</td>
+                            <td>{{t.name}}</td>
+                            <td>{{t.start_date}}</td>
+                            <td>{{t.start_time|time:"H:i A"}}</td>
+                            <td>{{t.max_players}}</td>
+                            <td>{{t.group_size}}</td>
+                            <td>
+                                <a href="{% url 'edit_tournament' t.id %}" class="btn btn-outline-primary"><span class="fa fa-edit"></span></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Tournament</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'Add_Tournament' %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Game</label>
+                            <input type="text" class="form-control" name="game" placeholder="Game...." required>
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Game Name</label>
+                            <input type="text" class="form-control" name="game_name" placeholder="Game Name...." required>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Start Date</label>
+                            <input type="date" class="form-control" name="start_date" placeholder="Start Date...." required>
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Start Time</label>
+                            <input type="time" class="form-control" name="start_time" placeholder="Start Time...." required>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Max players</label>
+                            <input type="text" class="form-control" name="max_players" value="100" >
+                        </div>
+                        <div class="col">
+                            <label for="recipient-name" class="col-form-label">Group Size</label>
+                            <select class="custom-select" name="group_size" required>
+                                <option selected disabled>Select Group Size</option>
+                                <option value="solo">Solo</option>
+                                <option value="duo">Duo</option>
+                                <option value="squad">Squad</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" placeholder="Group Size...."> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create Tournament</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock%}

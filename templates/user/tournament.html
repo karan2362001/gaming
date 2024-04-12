@@ -1,0 +1,342 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content%}
+
+<style>
+	.page-banner {
+		background-image: url("{% static 'user/images/background/title-bg.jpg' %}");
+	}
+
+	.ag-format-container {
+		width: 1120px;
+		margin: 0 auto;
+	}
+
+	.ag-courses_box {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+
+		padding: 50px 0;
+	}
+
+	.ag-courses_item {
+		-ms-flex-preferred-size: calc(33.33333% - 30px);
+		flex-basis: calc(33.33333% - 30px);
+
+		margin: 0 15px 30px;
+
+		overflow: hidden;
+
+		border-radius: 28px;
+	}
+
+	.ag-courses-item_link {
+		display: block;
+		padding: 30px 20px;
+		background-color: #121212;
+
+		overflow: hidden;
+
+		position: relative;
+	}
+
+	.ag-courses-item_link:hover,
+	.ag-courses-item_link:hover .ag-courses-item_date {
+		text-decoration: none;
+		color: #FFF;
+	}
+
+	.ag-courses-item_link:hover .ag-courses-item_bg {
+		-webkit-transform: scale(10);
+		-ms-transform: scale(10);
+		transform: scale(10);
+	}
+
+	.ag-courses-item_title {
+		min-height: 87px;
+		margin: 0 0 25px;
+
+		overflow: hidden;
+
+		font-weight: bold;
+		font-size: 30px;
+		color: #FFF;
+
+		z-index: 2;
+		position: relative;
+	}
+
+	.ag-courses-item_date-box {
+		font-size: 18px;
+		color: #FFF;
+
+		z-index: 2;
+		position: relative;
+	}
+
+	.ag-courses-item_date {
+		font-weight: bold;
+		color: #f9b234;
+
+		-webkit-transition: color .5s ease;
+		-o-transition: color .5s ease;
+		transition: color .5s ease
+	}
+
+	.ag-courses-item_bg {
+		height: 128px;
+		width: 128px;
+		background-color: #f9b234;
+
+		z-index: 1;
+		position: absolute;
+		top: -75px;
+		right: -75px;
+
+		border-radius: 50%;
+
+		-webkit-transition: all .5s ease;
+		-o-transition: all .5s ease;
+		transition: all .5s ease;
+	}
+
+	.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+		background-color: #3ecd5e;
+	}
+
+	.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+		background-color: #e44002;
+	}
+
+	.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+		background-color: #952aff;
+	}
+
+	.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+		background-color: #cd3e94;
+	}
+
+	.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+		background-color: #4c49ea;
+	}
+
+
+
+	@media only screen and (max-width: 979px) {
+		.ag-courses_item {
+			-ms-flex-preferred-size: calc(50% - 30px);
+			flex-basis: calc(50% - 30px);
+		}
+
+		.ag-courses-item_title {
+			font-size: 24px;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.ag-format-container {
+			width: 96%;
+		}
+
+	}
+
+	@media only screen and (max-width: 639px) {
+		.ag-courses_item {
+			-ms-flex-preferred-size: 100%;
+			flex-basis: 100%;
+		}
+
+		.ag-courses-item_title {
+			min-height: 72px;
+			line-height: 1;
+
+			font-size: 24px;
+		}
+
+		.ag-courses-item_link {
+			padding: 22px 40px;
+		}
+
+		.ag-courses-item_date-box {
+			font-size: 16px;
+		}
+	}
+</style>
+<!--Page Title-->
+<section class="page-banner">
+	<div class="auto-container">
+		<div class="inner-container clearfix">
+			<ul class="bread-crumb clearfix">
+				<li><a href="index.html">Home</a></li>
+				<li>Tournament</li>
+			</ul>
+			<h1>Tournament</h1>
+		</div>
+	</div>
+</section>
+<!--End Page Title-->
+<!-- Matches Section -->
+<section class="matches-section">
+	<div class="auto-container">
+		<!-- Matches Info Tabs-->
+		<div class="matches-info-tabs">
+			<!-- Matches Tabs-->
+			<div class="matches-tabs tabs-box">
+				<!--Tab Btns-->
+				<ul class="tab-btns tab-buttons clearfix">
+					<li data-tab="#prod-matches" class="tab-btn active-btn"><span>Upcoming Matches</span></li>
+					<li data-tab="#prod-results" class="tab-btn"><span>recent Matches</span></li>
+					<li data-tab="#prod-all" class="tab-btn "><span>All Matches</span></li>
+				</ul>
+				<!--Tabs Container-->
+				<div class="tabs-content">
+					<!--Tab / Upcoming Tournament -->
+					<div class="tab active-tab" id="prod-matches">
+						<div class="content">
+							<!-- Matches Block -->
+							<div class="matches-block">
+								<div class="inner-block">
+									<div class="row clearfix">
+										<!-- Content Column -->
+										<div class="content-column col-lg-7 col-md-12 col-sm-12">
+											<div class="inner-column">
+												<div class="ag-format-container">
+													<div class="ag-courses_box">
+														{% for upt in upcoming_tournaments %}
+														<div class="ag-courses_item">
+															<a href="{% url 'Tournament_Detail' upt.id %}"
+																class="ag-courses-item_link">
+																<div class="ag-courses-item_bg"></div>
+																<div class="ag-courses-item_title">
+																	{{upt.name}}
+																</div>
+																<div class="ag-courses-item_date-box">
+																	Start:
+																	<span class="ag-courses-item_date">
+																		{{upt.start_date}}
+																	</span>
+																</div>
+															</a>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Tab / Previuos  Tournament -->
+					<div class="tab" id="prod-results">
+						<div class="content">
+							<!-- Matches Block -->
+							<div class="matches-block">
+								<div class="inner-block">
+									<div class="row clearfix">
+
+										<!-- Content Column -->
+										<div class="content-column col-lg-7 col-md-12 col-sm-12">
+											<div class="inner-column">
+												<div class="ag-format-container">
+													<div class="ag-courses_box">
+														{% for pt in past_tournaments %}
+
+														<div class="ag-courses_item">
+															<a class="ag-courses-item_link">
+																<div class="ag-courses-item_bg"></div>
+																<div class="ag-courses-item_title"
+																	style="min-height: 30px;">
+																	{{pt.name}}
+																</div>
+																<div class="ag-courses-item_date-box mb-3">
+																	Winner:
+																	{% if winner %}
+																	<span class="ag-courses-item_date">
+																		{{winner}} Team
+																	</span>
+																	{% else %}
+																	<span class="ag-courses-item_date">
+																		No Winner Yet
+																	</span>
+																	{% endif %}
+																</div>
+																<div class="ag-courses-item_date-box">
+																	Date:
+																	<span class="ag-courses-item_date">
+																		{{pt.start_date}}
+																	</span>
+																</div>
+															</a>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Tab / All Tournament -->
+					<div class="tab " id="prod-all">
+						<div class="content">
+							<!-- Matches Block -->
+							<div class="matches-block">
+								<div class="inner-block">
+									<div class="row clearfix">
+										<!-- Content Column -->
+										<div class="content-column col-lg-7 col-md-12 col-sm-12">
+											<div class="inner-column">
+												<div class="ag-format-container">
+													<div class="ag-courses_box">
+														{% for ut in user_tournament %}
+														<div class="ag-courses_item">
+															{% if ut in past_tournaments %}
+															<a class="ag-courses-item_link" onclick="return alert('This Tournament Is Over')">
+																{% else %}
+
+																<a href="{% url 'Tournament_Detail' ut.id %}" class="ag-courses-item_link">
+																	{% endif %}
+																	<div class="ag-courses-item_bg"></div>
+																	<div class="ag-courses-item_title">
+																		{{ut.name}}
+																	</div>
+																	<div class="ag-courses-item_date-box">
+																		Start:
+																		<span class="ag-courses-item_date">
+																			{{ut.start_date}}
+																		</span>
+																	</div>
+
+																</a>
+															</a>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Matches Section -->
+
+
+
+{% endblock %}

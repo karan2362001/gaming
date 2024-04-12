@@ -1,0 +1,41 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block contant%}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Slot</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+       
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Messages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in contact %}
+                        <tr>
+                            <td>{{c.name}}</td>
+                            <td>{{c.email}}</td>
+                            <td>{{c.message}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock%}

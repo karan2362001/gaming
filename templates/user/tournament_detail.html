@@ -1,0 +1,165 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content%}
+
+
+
+<!--Sidebar Page Container-->
+<div class="sidebar-page-container">
+	<div class="auto-container">
+		<div class="row clearfix">
+
+			<!--Content Side / Match Single -->
+			<div class="content-side col-lg-4 col-md-12 col-sm-12">
+				<div class="match-single">
+
+					<!-- Title Box -->
+					<div class="title-box">
+						<div class="recent-result">{{tournament_detail.game}}<span>.
+								{% if tournament_slot %}
+								{{ tournament_slot.remaining_slots }} Place Reamin
+								{% else %}
+								No slots available for booking.
+								{% endif %}
+							</span></div>
+						<h3>{{tournament_detail.name}}</h3>
+						<div class="date">{{tournament_detail.start_date}},
+							{{tournament_detail.start_time|time:"H:i A"}}</div>
+					</div>
+
+
+				</div>
+			</div>
+
+			<!--Sidebar Side-->
+			<div class="sidebar-side col-lg-8 col-md-12 col-sm-12">
+				<aside class="sidebar">
+					<!-- Form -->
+					<div class="sidebar-widget next-match-widget">
+						<div class="widget-content">
+							<!-- Form Column -->
+							<div class="form-column ">
+								<div class="inner-column wow fadeInRight" data-wow-delay="0ms">
+									<!--Default Form-->
+									<div class="default-form contact-form">
+										<form method="post" action="{% url 'Join_Tournament' %}">
+											{% csrf_token %}
+											<div class="row clearfix">
+												<input type="hidden" name="tournament_id" value="{{tournament_detail.id}}">
+												{% if tournament_detail.group_size == 'solo' %}
+
+												<div class="col-md-12 col-sm-12 form-group">
+													<input type="text" name="team_name" placeholder="Team Name"
+														required>
+												</div>
+												<!-- Player 1 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1" placeholder="Player 1 Name"
+														required>
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1_bgmi_id" placeholder="Game Id"
+														required>
+												</div>
+												<!-- Player 1 end -->
+												
+												{% elif tournament_detail.group_size == 'duo' %}
+
+												<div class="col-md-12 col-sm-12 form-group">
+													<input type="text" name="team_name" placeholder="Team Name"
+														required="">
+												</div>
+												<!-- Player 1 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1" placeholder="Player 1 Name"
+														required="">
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1_bgmi_id" placeholder="Game Id"
+														required="">
+												</div>
+												<!-- Player 1 end -->
+												<!-- Player 2 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_2" placeholder="Player 2 Name"
+														required="">
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_2_bgmi_id" placeholder="Game Id"
+														required="">
+												</div>
+												<!-- Player 2 end -->
+
+												{% else %}
+
+												<div class="col-md-12 col-sm-12 form-group">
+													<input type="text" name="team_name" placeholder="Team Name"
+														required>
+												</div>
+												<!-- Player 1 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1" placeholder="Player 1 Name"
+														required>
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_1_bgmi_id" placeholder="Game Id"
+														required>
+												</div>
+												<!-- Player 1 end -->
+												<!-- Player 2 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_2" placeholder="Player 2 Name"
+														required>
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_2_bgmi_id" placeholder="Game Id"
+														required>
+												</div>
+												<!-- Player 2 end -->
+												<!-- Player 3 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_3" placeholder="Player 3 Name"
+														required>
+												</div>
+
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_3_bgmi_id" placeholder="Game Id"
+														required>
+												</div>
+												<!-- Player 3 end -->
+												<!-- Player 4 -->
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_4" placeholder="Player 4 Name"
+														required>
+												</div>
+												<div class="col-md-6 col-sm-12 form-group">
+													<input type="text" name="player_4_bgmi_id" placeholder="Game Id"
+														required>
+												</div>
+												<!-- Player 4 end -->
+												{% endif %}
+												<div class="col-md-12 col-sm-12 form-group">
+													<button class="theme-btn btn-style-one" type="submit"><span
+															class="btn-title">Join Tournament</span></button>
+												</div>
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Sidebar Page Container -->
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content%}
+
+
+
+<!--Sidebar Page Container-->
+<div class="sidebar-page-container">
+	<div class="auto-container">
+		<div class="row clearfix">
+
+			<!--Content Side / Match Single -->
+			<div class="content-side col-lg-6 col-md-12 col-sm-12">
+				<div class="match-single">
+
+					<!-- Title Box -->
+					<div class="title-box">
+						<div class="recent-result">{{past_tournament_detail.game}}<span></span></div>
+						<h3>{{past_tournament_detail.name}}</h3>
+						<div class="date">{{past_tournament_detail.start_date}},
+							{{past_tournament_detail.start_time|time:"H:i A"}}</div>
+					</div>
+				</div>
+			</div>
+
+			<!--Sidebar Side-->
+			<div class="sidebar-side col-lg-6 col-md-12 col-sm-12">
+				<aside class="sidebar">
+					<!-- Form -->
+					<div class="sidebar-widget next-match-widget">
+						<div class="widget-content">
+							<!-- Form Column -->
+							<div class="form-column ">
+								<div class="inner-column wow fadeInRight" data-wow-delay="0ms">
+									<!--Default Form-->
+									{% for ptp in past_tournament_player %}
+									<div class="default-form contact-form">
+											<div class="row clearfix">
+												Team Name ==   {{ptp.team_name}}
+
+												<div class="card text-white bg-dark" style="width: 18rem;">
+													<div class="card-body ">
+													  <h5 class="card-title ">Team Name :   {{ptp.team_name}}</h5>
+													  <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+													</div>
+												  </div>
+												{% if past_tournament_detail.group_size == 'solo' %}
+												
+												{% elif past_tournament_detail.group_size == 'duo' %}
+
+												{% else %}
+
+												{% endif %}
+											</div>
+									</div>
+									{% endfor %}
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Sidebar Page Container -->
+
+{% endblock %}

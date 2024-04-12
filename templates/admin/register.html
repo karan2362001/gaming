@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Odd a Games Category Responsive Web Template | Sign Up :: W3layouts</title>
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'css/style-freedom-demo.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&amp;display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+  <!-- form -->
+  <section class="w3l-form2">
+    <div class="section-back">
+      <div class="container">
+        <div class="logo-widget text-center">
+          <h1><a class="brand-logo" href="{% url 'index' %}"><span class="fa fa-gamepad" aria-hidden="true"></span>ODD</a>
+          </h1>
+        </div>
+      </div>
+      <div class="form-form">
+        <div class="login-content">
+          <div class="top">
+            <h5 class="login">Sign up</h5>
+            <a href="{% url 'login' %}" class="sign-in">login</a>
+            <div class="clear"></div>
+          </div>
+          <div class="form-left">
+
+            <form action="{% url 'signup' %}" method="post" class="signin-form">
+              {% csrf_token %}
+              <div class="form-input">
+                <label>Name</label>
+                <input type="text" name="username"  required />
+              </div>
+              <div class="form-input">
+                <label>Email</label>
+                <input type="email" name="email"  required />
+              </div>
+              <div class="form-input">
+                <label>Password</label>
+                <input type="password" name="password1"  required />
+              </div>
+              <div class="form-input">
+                <label>Password</label>
+                <input type="password" name="password2"  required />
+              </div>
+              <button class="btn action-button btn-primary mt-4">Singup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="columns-copy">
+          <p>
+            © 2020 ODD . All Rights Reserved
+          </p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <!-- //form -->
+</body>
+
+</html>
